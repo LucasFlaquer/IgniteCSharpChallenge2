@@ -33,4 +33,27 @@ public class BooksService
         return books.Find(book => book.Id == id);
         
     }
+
+    public void Update(UpdateBookDto bookToUpdate) 
+    {
+        int index = books.FindIndex(book => book.Id == bookToUpdate.Id);
+        if(index == -1)
+        {
+            throw new Exception("Book not found");
+        }
+        books[index].Title = bookToUpdate.Title;
+        books[index].Author = bookToUpdate.Author;
+        books[index].Gender = bookToUpdate.Gender;
+        books[index].Price = bookToUpdate.Price;
+    }
+
+    public void Delete(string id)
+    {
+        Book? book = GetById(id);
+        if(book == null)
+        {
+            throw new ArgumentNullException("id");
+        }
+        books.Remove(book);
+    }
 }

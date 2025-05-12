@@ -1,7 +1,8 @@
 ﻿namespace IgniteCSharpChallenge2;
 
-public class CreateBookDto
+public class UpdateBookDto
 {
+    public required string Id { get; set; }
     public required string Title { get; set; }
     public required string Author { get; set; }
     public required string Gender { get; set; }
